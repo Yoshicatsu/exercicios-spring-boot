@@ -92,7 +92,7 @@ public class ProductService {
         try {
             Optional<Product> product = productRepository.findById(id);
 
-            if (product.isEmpty()) {
+            if (!product.isPresent()) {
                 throw new ProductBusinessException("Produto não está cadastrado");
             }
             return product.get();
@@ -107,7 +107,7 @@ public class ProductService {
     public Product alterById(ProductUpdateRequest request) throws ProductBusinessException {
         try {
             Optional<Product> optProduct = productRepository.findById(request.getId());
-            if (optProduct.isEmpty()) {
+            if (!optProduct.isPresent()) {
                 throw new ProductBusinessException("Produto não está cadastrado");
             }
             Product product = optProduct.get();
@@ -128,7 +128,7 @@ public class ProductService {
     public void deleteById(BigInteger id) throws ProductBusinessException {
         try {
             Optional<Product> optProduct = productRepository.findById(id);
-            if (optProduct.isEmpty()) {
+            if (!optProduct.isPresent()) {
                 throw new ProductBusinessException("Produto não está cadastrado");
             }
             productRepository.deleteById(id);
