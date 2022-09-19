@@ -5,6 +5,7 @@ import br.com.yoshicatsu.exerciciosspringboot.models.exceptions.ProductBusinessE
 import br.com.yoshicatsu.exerciciosspringboot.models.exceptions.UnexpectedDatabaseException;
 import br.com.yoshicatsu.exerciciosspringboot.models.requests.ProductUpdateRequest;
 import br.com.yoshicatsu.exerciciosspringboot.repositories.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,11 +20,14 @@ import java.util.Optional;
 @Service
 public class ProductService {
 
-    private final ProductRepository productRepository;
+    @Autowired
+    ProductRepository productRepository;
 
-    public ProductService(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
+//    private final ProductRepository productRepository;
+//
+//    public ProductService(ProductRepository productRepository) {
+//        this.productRepository = productRepository;
+//    }
 
     public void register(String name, Double price, Double discount, Integer availableQuantity) throws ProductBusinessException {
         Product product = new Product();

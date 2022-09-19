@@ -31,3 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
+/out/artifacts/exercicios_spring_boot_jar/exercicios-spring-boot.jar
+/src/main/resources/META-INF/MANIFEST.MF
